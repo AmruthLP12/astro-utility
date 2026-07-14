@@ -1,0 +1,71 @@
+---
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/starwind/card";
+
+interface Tool {
+  title: string;
+  href: string;
+}
+
+interface Props {
+  tools: Tool[];
+}
+
+const { tools } = Astro.props;
+---
+
+<section class="mt-16">
+
+  <div class="mb-8">
+    <h2 class="text-3xl font-bold tracking-tight">
+      Related Tools
+    </h2>
+
+    <p class="mt-2 text-muted-foreground">
+      Explore more free online tools.
+    </p>
+  </div>
+
+  <div class="grid gap-6 md:grid-cols-2">
+
+    {tools.map((tool) => (
+
+      <a href={tool.href} class="group">
+
+        <Card class="transition-all duration-200 group-hover:shadow-md group-hover:border-primary">
+
+          <CardHeader>
+
+            <CardTitle class="flex items-center justify-between">
+
+              {tool.title}
+
+              <span class="transition-transform group-hover:translate-x-1">
+                →
+              </span>
+
+            </CardTitle>
+
+          </CardHeader>
+
+          <CardContent>
+
+            <p class="text-sm text-muted-foreground">
+              Open tool
+            </p>
+
+          </CardContent>
+
+        </Card>
+
+      </a>
+
+    ))}
+
+  </div>
+
+</section>

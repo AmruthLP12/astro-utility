@@ -1,0 +1,106 @@
+---
+import BaseLayout from "@/layouts/Layout.astro";
+import ToolBreadcrumb from "./ToolBreadcrumb.astro";
+import ToolHero from "./ToolHero.astro";
+import ToolCard from "./ToolCard.astro";
+import ToolFeatures from "./ToolFeatures.astro";
+import ToolFAQ from "./ToolFAQ.astro";
+import RelatedTools from "./RelatedTools.astro";
+
+interface Breadcrumb {
+  label: string;
+  href?: string;
+}
+
+interface Feature {
+  title: string;
+  description: string;
+}
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface RelatedTool {
+  title: string;
+  href: string;
+}
+
+interface Tool {
+  title: string;
+  description: string;
+  category: string;
+
+  breadcrumbs: Breadcrumb[];
+
+  features: Feature[];
+
+  faqs: FAQ[];
+
+  relatedTools?: RelatedTool[];
+}
+
+interface Props {
+  tool: Tool;
+
+  cardTitle?: string;
+  cardDescription?: string;
+}
+
+const {
+  tool,
+  cardTitle,
+  cardDescription,
+} = Astro.props;
+---
+
+<BaseLayout>
+  <div class="container mx-auto max-w-5xl px-6 py-16">
+    <h1 class="text-3xl font-bold tracking-tight">
+      {tool.title}
+    </h1>
+
+    <p class="mt-2 text-muted-foreground">
+      {tool.description}
+    </p>
+  </div>
+
+<main class="container mx-auto max-w-5xl px-6 py-16">
+
+  <ToolBreadcrumb
+    items={tool.breadcrumbs}
+  />
+
+  <ToolHero
+    title={tool.title}
+    description={tool.description}
+    category={tool.category}
+  />
+
+  <ToolCard
+    title={cardTitle}
+    description={cardDescription}
+  >
+    <slot />
+  </ToolCard>
+
+  <ToolFeatures
+    features={tool.features}
+  />
+
+  <ToolFAQ
+    items={tool.faqs}
+  />
+
+  {
+    tool.relatedTools &&
+    tool.relatedTools.length > 0 && (
+      <RelatedTools
+        tools={tool.relatedTools}
+      />
+    )
+  }
+
+</main>
+</BaseLayout>

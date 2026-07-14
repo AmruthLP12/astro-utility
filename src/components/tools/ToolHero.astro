@@ -1,0 +1,43 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  category?: string;
+}
+
+const {
+  title,
+  description,
+  category = "Utility Tool",
+} = Astro.props;
+---
+
+<header class="space-y-6">
+
+  <div class="flex items-center gap-3">
+
+    <span
+      class="rounded-full border bg-muted px-3 py-1 text-xs font-medium uppercase tracking-wide text-muted-foreground"
+    >
+      {category}
+    </span>
+
+  </div>
+
+  <div class="space-y-3">
+
+    <h1
+      class="text-4xl font-bold tracking-tight md:text-5xl"
+    >
+      {title}
+    </h1>
+
+    <p
+      class="max-w-3xl text-lg leading-relaxed text-muted-foreground"
+    >
+      {description}
+    </p>
+
+  </div>
+
+</header>

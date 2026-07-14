@@ -1,0 +1,45 @@
+---
+import { Card, CardContent } from "@/components/starwind/card";
+import { Check } from "@lucide/astro";
+
+interface Feature {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  features: Feature[];
+}
+
+const { features } = Astro.props;
+---
+
+<section class="mt-16">
+  <div class="mb-8">
+    <h2 class="text-3xl font-bold tracking-tight">Features</h2>
+
+    <p class="mt-2 text-muted-foreground">Everything this tool offers.</p>
+  </div>
+
+  <div class="grid gap-4 md:grid-cols-2">
+    {
+      features.map((feature) => (
+        <Card class="transition-all hover:border-primary hover:shadow-sm py-0">
+          <CardContent class="flex items-start gap-3 p-4">
+            <div class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+              <Check class="size-4" />
+            </div>
+
+            <div>
+              <h3 class="font-medium">{feature.title}</h3>
+
+              <p class="mt-1 text-sm text-muted-foreground">
+                {feature.description}
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      ))
+    }
+  </div>
+</section>
