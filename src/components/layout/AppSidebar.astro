@@ -1,0 +1,126 @@
+---
+
+import ChartPieIcon from "@tabler/icons/outline/chart-pie.svg";
+import ChevronRightIcon from "@tabler/icons/outline/chevron-right.svg";
+import CodeIcon from "@tabler/icons/outline/code.svg";
+import FrameIcon from "@tabler/icons/outline/frame.svg";
+import MapIcon from "@tabler/icons/outline/map.svg";
+
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/starwind/collapsible";
+
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+  SidebarProvider,
+  SidebarRail,
+  SidebarSeparator,
+} from "@/components/starwind/sidebar";
+
+import { navigation } from "@/data/navigation";
+
+const projects = [
+  { name: "Design Engineering", url: "#", icon: FrameIcon },
+  { name: "Sales & Marketing", url: "#", icon: ChartPieIcon },
+  { name: "Travel", url: "#", icon: MapIcon },
+];
+---
+
+<SidebarProvider>
+  <Sidebar collapsible="icon">
+    <SidebarHeader>
+      <SidebarMenu>
+        <SidebarMenuItem>
+          <SidebarMenuButton size="lg">
+            <div
+              class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-10 items-center justify-center rounded-lg"
+            >
+              <CodeIcon class="size-5" />
+            </div>
+            <div class="grid flex-1 text-left text-sm leading-tight">
+              <span class="truncate font-semibold">Astro Utility</span>
+              <span class="text-sidebar-foreground/70 truncate text-xs">Free Online Utility Tools</span>
+            </div>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+      </SidebarMenu>
+    </SidebarHeader>
+
+    <SidebarSeparator />
+
+    <SidebarContent>
+      <SidebarGroup>
+        <SidebarGroupLabel>Platform</SidebarGroupLabel>
+        <SidebarGroupContent>
+          <SidebarMenu>
+            {
+              navigation.map((group) => (
+                <Collapsible class="group/collapsible">
+                  <SidebarMenuItem>
+                    <CollapsibleTrigger asChild>
+                      <SidebarMenuButton tooltip={group.title}>
+                        <group.icon />
+                        <span>{group.title}</span>
+                        <ChevronRightIcon class="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                      </SidebarMenuButton>
+                    </CollapsibleTrigger>
+                    {group.items && (
+                      <CollapsibleContent>
+                        <SidebarMenuSub>
+                          {group.items.map((subItem) => (
+                            <SidebarMenuSubItem>
+                              <SidebarMenuSubButton href={subItem.href}>
+                                <span>{subItem.title}</span>
+                              </SidebarMenuSubButton>
+                            </SidebarMenuSubItem>
+                          ))}
+                        </SidebarMenuSub>
+                      </CollapsibleContent>
+                    )}
+                  </SidebarMenuItem>
+                </Collapsible>
+              ))
+            }
+          </SidebarMenu>
+        </SidebarGroupContent>
+      </SidebarGroup>
+
+      <SidebarGroup class="group-data-[collapsible=icon]:hidden">
+        <SidebarGroupLabel>Projects</SidebarGroupLabel>
+        <SidebarGroupContent>
+          <SidebarMenu>
+            {
+              projects.map((project) => (
+                <SidebarMenuItem>
+                  <SidebarMenuButton href={project.url} tooltip={project.name}>
+                    <project.icon />
+                    <span>{project.name}</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))
+            }
+          </SidebarMenu>
+        </SidebarGroupContent>
+      </SidebarGroup>
+    </SidebarContent>
+
+    <SidebarRail />
+  </Sidebar>
+
+  <main class="flex-1">
+    <slot />
+  </main>
+</SidebarProvider>

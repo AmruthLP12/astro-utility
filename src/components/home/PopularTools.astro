@@ -1,0 +1,33 @@
+---
+import { tools } from "@/data/tools";
+
+import ToolGridCard from "@/components/tools/ToolGridCard.astro";
+
+const popularTools = tools.filter(tool => tool.popular);
+---
+
+<section class="container mx-auto max-w-6xl px-6 py-20">
+
+  <div class="mb-10">
+
+    <h2 class="text-3xl font-bold">
+      Popular Tools
+    </h2>
+
+    <p class="mt-2 text-muted-foreground">
+      The tools people use the most.
+    </p>
+
+  </div>
+
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+    {popularTools.map(tool => (
+
+      <ToolGridCard tool={tool} />
+
+    ))}
+
+  </div>
+
+</section>

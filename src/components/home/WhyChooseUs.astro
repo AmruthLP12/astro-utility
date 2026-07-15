@@ -1,0 +1,52 @@
+---
+import { whyChooseUs } from "@/data/why-choose-us";
+
+import {
+  Card,
+  CardContent,
+} from "@/components/starwind/card";
+---
+
+<section class="container mx-auto max-w-6xl px-6 py-20">
+
+  <div class="mb-10 text-center">
+
+    <h2 class="text-3xl font-bold tracking-tight">
+      Why Choose Us?
+    </h2>
+
+    <p class="mt-3 text-muted-foreground">
+      Simple, fast, and privacy-friendly tools you can trust.
+    </p>
+
+  </div>
+
+  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+
+    {whyChooseUs.map((item) => (
+
+      <Card class="h-full transition-all hover:-translate-y-1 hover:border-primary hover:shadow-md">
+
+        <CardContent class="flex flex-col items-center p-6 text-center">
+
+          <div class="mb-4 text-4xl">
+            {item.icon}
+          </div>
+
+          <h3 class="text-lg font-semibold">
+            {item.title}
+          </h3>
+
+          <p class="mt-2 text-sm text-muted-foreground">
+            {item.description}
+          </p>
+
+        </CardContent>
+
+      </Card>
+
+    ))}
+
+  </div>
+
+</section>
