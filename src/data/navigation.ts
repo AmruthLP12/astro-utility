@@ -15,8 +15,8 @@ export const navigation = [
         href: "/tools/password-generator",
       },
       {
-        title: "Hash Generator",
-        href: "/tools/hash-generator",
+        title: "Word to Password Generator",
+        href: "/tools/word-to-password-generator",
       },
     ],
   },
