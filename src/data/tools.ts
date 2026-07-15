@@ -21,8 +21,7 @@ export const tools: Tool[] = [
 
     title: "Password Generator",
 
-    description:
-      "Generate secure random passwords with customizable options.",
+    description: "Generate secure random passwords with customizable options.",
 
     category: "security",
 
@@ -34,19 +33,32 @@ export const tools: Tool[] = [
   },
 
   {
-    id: "uuid-generator",
-    slug: "uuid-generator",
+    id: "word-to-password-generator",
+    slug: "word-to-password-generator",
 
-    title: "UUID Generator",
+    title: "Word to Password Generator",
 
-    description:
-      "Generate Version 4 UUIDs instantly.",
+    description: "Convert words or phrases into strong, memorable passwords.",
 
-    category: "developer",
+    category: "security",
 
-    icon: "🆔",
-
+    icon: "🔐",
+    featured: true,
     popular: true,
+    new: true,
+  },
+
+  {
+    id: "password-strength-checker",
+    slug: "password-strength-checker",
+
+    title: "Password Strength Checker",
+
+    description: "Check the strength of your passwords.",
+
+    category: "security",
+
+    icon: "🔐",
   },
 
   {
@@ -55,8 +67,7 @@ export const tools: Tool[] = [
 
     title: "JSON Formatter",
 
-    description:
-      "Beautify and validate JSON online.",
+    description: "Beautify and validate JSON online.",
 
     category: "Developer",
 
@@ -71,8 +82,7 @@ export const tools: Tool[] = [
 
     title: "QR Code Generator",
 
-    description:
-      "Create QR codes for links, text, Wi-Fi and more.",
+    description: "Create QR codes for links, text, Wi-Fi and more.",
 
     category: "Generator",
 
