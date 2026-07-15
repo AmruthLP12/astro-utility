@@ -6,6 +6,8 @@ import ToolCard from "./ToolCard.astro";
 import ToolFeatures from "./ToolFeatures.astro";
 import ToolFAQ from "./ToolFAQ.astro";
 import RelatedTools from "./RelatedTools.astro";
+import AppSidebar from "@/components/layout/AppSidebar.astro";
+
 
 interface Breadcrumb {
   label: string;
@@ -56,6 +58,7 @@ const {
 ---
 
 <BaseLayout>
+  <AppSidebar>
   <div class="container mx-auto max-w-5xl px-6 py-16">
     <h1 class="text-3xl font-bold tracking-tight">
       {tool.title}
@@ -103,4 +106,5 @@ const {
   }
 
 </main>
+</AppSidebar>
 </BaseLayout>
